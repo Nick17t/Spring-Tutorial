@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--使用构造注入方式装配User实例-->
+        <bean id="user1" class="assemble.User">
+            <constructor-arg index="0" value="nick"></constructor-arg>
+            <constructor-arg index="1" value="123456"></constructor-arg>
+            <constructor-arg index="2">
+                <list>
+                    <value>"构造注入值1"</value>
+                    <value>"构造注入值2"</value>
+                </list>
+            </constructor-arg>
+        </bean>
+
+
+        <!--2.使用设值注入方式装配User实例-->
+        <bean id="user2" class="assemble.User">
+            <property name="userName" value="17t"></property>
+            <property name="password" value="654321"></property>
+            <!--注入list集合-->
+            <property name="list">
+                <list>
+                    <value>"设值注入1"</value>
+                    <value>"设值注入2"</value>
+                </list>
+            </property>
+        </bean>
+</beans>

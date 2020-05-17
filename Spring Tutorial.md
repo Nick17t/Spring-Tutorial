@@ -21,7 +21,7 @@
 
 
 
-## Spring的核心容器
+### Spring的核心容器
 
 1. BeanFactory
 
@@ -80,7 +80,7 @@
 
 
 
-## 依赖注入
+### 依赖注入
 
 ​	DI（Dependency Injection）依赖注入和控制反转含义相同，两个角度同一概念。
 
@@ -135,8 +135,45 @@
 | application                 |                                                |
 | websocket                   |                                                |
 
+
+
 ### 生命周期
 
-Spring容器可以管理 singleton作用域的Bean的生命周期在此作用域下， Springi能够精确的知道该Bean何时
-被创建，何时初始化完成，以及何时被销毁。
+Spring容器可以管理 singleton作用域的Bean的生命周期在此作用域下， Springi能够精确的知道该Bean何时被创建，何时初始化完成，以及何时被销毁。
+
 prototype作用域的Bean, Spring只负责创建，当容器创建了Bean实例后，Bean的实例就交给客户端代码来管理， Spring容器将不再跟踪其生命周期。
+
+
+
+### 装配方式
+
+1. 基于XML的装配(容易导致配置文件臃肿)
+   1. 设值注入 Setter Injection
+      1. Bean类必须有无参构造方法
+      2. Bean类必须为属性提供setter方法
+      -  配置文件中使用<property>为属性注入值
+   2. 构造注入 Constructor Injection
+      1. Bean类必须有有参构造方法
+      -  配置文件中使用<constructor-arg>为属性注入值
+   
+2. **基于注解的装配**
+
+   @ Component：用于描述 Spring中的Bean，它是一个泛化的概念，
+   仅仅表示一个组件。
+   ④ Repository：用于将数据访问层（DAO）的类标识为 Spring中的Bean.
+   Service：用于将业务层（ Service）的类标识为 Spring中的Bean
+   Controler：用于将控制层（ Controller）的类标识为 Springe中的
+   Bean.
+   Autowired：用于对Bean的属性变量、属性的 setter/方法及构造方法进行标注，配合对应的注解处理器完成Bean的自动配置工作。
+   Resource：其作用与 Autowired-一样。 Resourcel中有两个重要属性：name和type. Spring将name属性解析为Bean实例名称，type属性解析为Bean实例类型。
+   Qualifier：与@ Autowired注解配合使用，会将默认的按Bean类型装配修改为按Bean的实例名称装配，Bean的实例名称由@ Qualifier
+   注解的参数指定。
+
+   ​	
+
+3. 自动装配
+
+    不常用 	autowire
+
+
+
